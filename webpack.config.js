@@ -1,18 +1,27 @@
 const path = require('path');
 const webpack = require('webpack'); //访问内置的插件
+const HtmlwebpackPlugin = require('html-webpack-plugin');
 const uglifyjsPlugin = require('uglifyjs-webpack-plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+console.log('process.env==========>', process.env.env)
 module.exports = {
     mode: "development",
-    entry: {
-        bundle: './assets/js/index.js',
-        bundle1: './assets/js/index1.js'
-    },
+    entry: './index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: '[name].js'
+        filename: 'build.js'
+    },
+    resolve: {
+        alias: {
+            'vue$': 'vue/dist/vue.js'
+        }
     },
     module: {
         rules: [
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader'
+            },
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
@@ -49,6 +58,11 @@ module.exports = {
         ]
     },
     plugins: [
-        new uglifyjsPlugin()
+        new uglifyjsPlugin(),
+        new HtmlwebpackPlugin({
+            template: './index.html'
+        }),
+        new VueLoaderPlugin()
     ]
 }
+

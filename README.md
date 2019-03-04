@@ -10,4 +10,4 @@
 - <tbd>Environment flags</tbd>
 
 #### Vue
-- 引入vue
+- <del>引入vue</del>
