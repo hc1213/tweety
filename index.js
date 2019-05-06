@@ -28,7 +28,7 @@ Vue.use(VueRouter)
 
 let router = new VueRouter({
     routes: [
-        { path: '*', component: DefaultPage },
+        { path: '*', component: Home },
         {
             path: '/user/:id', component: User, children: [
                 {
@@ -53,5 +53,5 @@ let router = new VueRouter({
 new Vue({
     el: '#app',
     store,
-    router: router
+    router
 })

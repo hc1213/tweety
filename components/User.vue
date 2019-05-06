@@ -3,6 +3,7 @@
         <p>hello:{{ this.$route.params.id }}</p>
         <p @click="add">count:{{ this.$store.state.count }}</p>
         <router-view />
+        <div class="wtf">wtf</div>
     </div>
 </template>
 
@@ -13,8 +14,8 @@
                 greeting: '404 NOT FOUND',
             }
         },
-        methods:{
-            add:function(){
+        methods: {
+            add: function () {
                 console.log('=====>')
                 this.$store.commit('increment')
             }
@@ -26,5 +27,9 @@
     p {
         font-size: 18px;
         text-align: center;
+    }
+
+    .wtf {
+        color: red;
     }
 </style>
